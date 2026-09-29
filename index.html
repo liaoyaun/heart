@@ -23,7 +23,7 @@ canvas.height = H * dpr;
 canvas.style.width = W + "px";
 canvas.style.height = H + "px";
 ctx.scale(dpr, dpr);
-function heart_func(t, scale=16){
+function heart_func(t, scale=19){
     let x = 16 * Math.pow(Math.sin(t),3);
     let y = -(13 * Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
     return [x*scale + center_x, y*scale + center_y];
