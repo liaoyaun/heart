@@ -17,23 +17,19 @@ const ctx = canvas.getContext('2d');
 const W=800, H=800;
 const center_x = W/2, center_y = H/2;
 const color="#FF69B4";
-
-// 修复高清屏模糊
 const dpr = window.devicePixelRatio || 1;
 canvas.width = W * dpr;
 canvas.height = H * dpr;
 canvas.style.width = W + "px";
 canvas.style.height = H + "px";
 ctx.scale(dpr, dpr);
-
-function heart_func(t, scale=11){
+function heart_func(t, scale=16){
     let x = 16 * Math.pow(Math.sin(t),3);
     let y = -(13 * Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
     return [x*scale + center_x, y*scale + center_y];
 }
 let particles = [];
-// 内部弥散粒子，没有爱心硬轮廓边框
-for(let i=0;i<7000;i++){
+for(let i=0;i<9000;i++){
     let t = Math.random()*Math.PI*2;
     let [x,y] = heart_func(t);
     let beta=0.18;
@@ -46,13 +42,12 @@ for(let i=0;i<7000;i++){
         y:ny,
         ox:nx,
         oy:ny,
-        size: 1.2 + Math.random()*0.8 // 粒子稍微放大一点，减轻发虚
+        size: 1.2 + Math.random()*0.8
     });
 }
 let frame=0;
 function loop(){
     ctx.clearRect(0,0,W,H);
-    // 速度：分母120，越大越慢，你可以改成150、200继续调
     let p = frame / 120 * Math.PI;
     let ratio = 10 * (2 * Math.sin(4*p)) / (2*Math.PI);
     for(let pt of particles){
