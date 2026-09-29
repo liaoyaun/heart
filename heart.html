@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>李峋的含金量</title>
+<title>怦然心动</title>
 <style>
 *{margin:0;padding:0}
 body{background:#000;display:flex;justify-content:center;align-items:center;height:100vh;}
@@ -48,7 +48,7 @@ function loop(){
     // =========重点修改：完全清空画布，不再半透明叠加，画面不再糊！=========
     ctx.clearRect(0,0,W,H);
 
-    let p = frame /35 * Math.PI;
+    let p = frame /50 * Math.PI;
     let ratio = 10 * (2 * Math.sin(4*p)) / (2*Math.PI);
 
     for(let pt of particles){
